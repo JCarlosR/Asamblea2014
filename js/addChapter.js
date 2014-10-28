@@ -1,4 +1,12 @@
-$("#btnAccept").on('click', agregarCapitulo);
+$('#btnAccept').on('click', agregarCapitulo);
+$('#txtCapitulo').on('keyup', teclaPresionada);
+
+function teclaPresionada(e) 
+{
+    if( e.which == 13 )
+        agregarCapitulo();
+    else this.value = this.value.toUpperCase();
+}
 
 var nroCap, descrip;
 function agregarCapitulo() 
@@ -12,16 +20,20 @@ function agregarCapitulo()
 	peticion_http.send('descripcion='+descrip+'&nroCap='+nroCap+'&nroTit='+nroTit);
 
 	peticion_http.onreadystatechange = muestraContenido;
-	$('.editar').hide();
+
+	$('#txtCapitulo').val('');
+	$('#txtCapitulo').blur();
+	ocultarEditar();
 }
  
 function muestraContenido() 
 {
-	if(peticion_http.readyState == 4 && peticion_http.status == 200) 
-    {
-    	alert("El capítulo se agregó correctamente.");
-    	mostrarNuevoCapitulo(peticion_http.responseText);
-    }// else alert("Ocurrió un error inesperado.");
+	if(peticion_http.readyState == 4) 
+    	if(peticion_http.status == 200)
+    	{
+    		alert("El capítulo se agregó correctamente.");
+    		mostrarNuevoCapitulo(peticion_http.responseText);
+    	} else alert("Ocurrió un error inesperado.");    
 }
  
 window.onload = function () 

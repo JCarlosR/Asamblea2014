@@ -28,7 +28,10 @@ if( haIniciadoSesion() )
 		</label>
 		<input type="password" name="txtPass">
 
-		<input type="submit" id="login" value="Iniciar sesión" class="como-bloque" />
+		<button class="edicion-boton como-bloque" onclick="document.forms[0].submit()">
+			<img src="img/iniciar.png" alt="Iniciar sesión">
+			Iniciar sesión
+		</button>
 	</form>
 	
 	<script src="js/jquery.js"></script>

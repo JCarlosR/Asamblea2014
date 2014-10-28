@@ -13,39 +13,38 @@ else
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-	<header>
-		<h1>Asamblea2014</h1>
-	</header>
-	
+	<?php 
+		require_once 'header.php'; 
+	?>
 	<nav class="menu-navegacion">
-		<a href="#" class="botones" id="btnAdd">
+		<div class="menu-boton" id="btnAdd">
 			<img src="img/agregar.png" alt="Agregar">
 			Agregar
-		</a>
-		<a href="#" class="botones" id="btnEdit">
+		</div>
+		<div class="menu-boton" id="btnEdit">
 			<img src="img/editar.png" alt="Editar">
 			Editar
-		</a>
-		<a href="scripts/cerrar-sesion.php" class="botones" id="btnLogout">
+		</div>
+		<a href="scripts/cerrar-sesion.php" class="menu-boton" id="btnLogout">
 			<img src="img/cerrar.png" alt="Registrarse">
 			Cerrar sesión
 		</a>
 	</nav>
 
 	<section class="editar">
-		<form action="#">
+		<form class="formAjax" action="">
 			<label for="txtTitulo" class="como-bloque">
 				Ingrese <strong>Título <span><?= sizeof($titulos)+1 ?></span></strong>:
 			</label>
-			<input type="text" id="txtTitulo" class="como-bloque" onkeyup="javascript:this.value=this.value.toUpperCase();">
-			<a href="#" class="botones" id="btnAccept">
+			<input type="text" id="txtTitulo" class="como-bloque">
+			<div class="edicion-boton" id="btnAccept">
 				<img src="img/aceptar.png" alt="Aceptar">
 				Aceptar
-			</a>
-			<a href="#" class="botones" id="btnCancel">
+			</div>
+			<div class="edicion-boton" id="btnCancel">
 				<img src="img/cancelar.png" alt="Cancelar">
 				Cancelar
-			</a>			
+			</div>			
 		</form>
 	</section>
 
@@ -55,10 +54,11 @@ else
 	{
 ?>
 	<div class="contenedor">
-		<img src="img/titulo.png" alt="Titulo" class="izquierda">
+		<input type="radio" name="grupoRbtn" value="<?= $titulos[$i][2] ?>" class="radiobtn" />
+		<img src="img/titulo.png" alt="Título" class="izquierda">
 		<p class="title"><strong>Título <?= $titulos[$i][2] ?>:</strong> <?= $titulos[$i][1] ?></p>
 		<a href="capitulos.php?title=<?php echo $titulos[$i][0] ?>">
-			<img src="img/ir.png" alt="Título 1" class="derecha">
+			<img src="img/ir.png" alt="Título" class="derecha">
 		</a>
 	</div>	
 <?php

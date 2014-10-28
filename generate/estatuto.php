@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Estatuto Generado</title>
-	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="../css/normalize.css">
 	<link rel="stylesheet" href="estilos.css">
 </head>
 <body>

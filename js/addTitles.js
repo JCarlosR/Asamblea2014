@@ -1,5 +1,12 @@
-// Revisar jQuery.post( )
-$("#btnAccept").on('click', agregarTitulo);
+$('#btnAccept').on('click', agregarTitulo);
+$('#txtTitulo').on('keyup', teclaPresionada);
+
+function teclaPresionada(e) 
+{
+    if( e.which == 13 )
+        agregarTitulo();
+    else this.value = this.value.toUpperCase();
+}
 
 var nroTit, descrip;
 function agregarTitulo() 
@@ -12,16 +19,20 @@ function agregarTitulo()
 	peticion_http.send('descripcion='+descrip+'&nroTit='+nroTit);
 
 	peticion_http.onreadystatechange = muestraContenido;
-	$('.editar').hide();
+
+	$('#txtTitulo').val('');
+	$('#txtTitulo').blur();
+	ocultarEditar();
 }
  
 function muestraContenido() 
 {
-	if(peticion_http.readyState == 4 && peticion_http.status == 200) 
-    {
-    	alert("El título se agregó correctamente.");
-    	mostrarNuevoTitulo(peticion_http.responseText);
-    } //else alert("Ocurrió un error inesperado.");
+	if(peticion_http.readyState == 4) 
+    	if(peticion_http.status == 200)
+    	{
+    		alert("El título se agregó correctamente.");
+    		mostrarNuevoTitulo(peticion_http.responseText);
+    	} else alert("Ocurrió un error inesperado.");
 }
  
 window.onload = function () 

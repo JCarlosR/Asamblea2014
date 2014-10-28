@@ -37,8 +37,8 @@
     	</table>
     </section>
 
-    <a class="botones">
-        <img src="img/Ver.png" alt="ver más" title="Ver más...">
+    <button class="menu-boton">
+        <img src="img/Ver.png" alt="Ver más" title="Ver más...">
         Ver más...
     </a>
 

@@ -24,8 +24,13 @@ if( haIniciadoSesion() )
 	<link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
+	<?php 
+		require_once 'header.php'; 
+	?>
 	<nav class="volver">
-		<a href="titulos.php" title="ir atrás"><img src="img/Volver.png" alt="Volver" class="imgVolver"></a>
+		<a href="titulos.php" title="Ir atrás">
+			<img src="img/Volver.png" alt="Volver">
+		</a>
 		<label>Volver a Títulos</label>
 	</nav>
 
@@ -34,30 +39,30 @@ if( haIniciadoSesion() )
 	</header>
 
 	<nav class="menu-navegacion">
-		<a href="#" class="botones" id="btnAdd">
+		<div class="menu-boton" id="btnAdd">
 			<img src="img/agregar.png" alt="Agregar">       
 			Agregar
-		</a>
-		<a href="#" class="botones" id="btnEdit">
+		</div>
+		<div class="menu-boton" id="btnEdit">
 			<img src="img/editar.png" alt="Editar">
 			Editar
-		</a>		
+		</div>		
 	</nav>	
 
 	<section class="editar">
-		<form action="#">
+		<form class="formAjax" action="">
 			<label for="txtCapitulo" class="como-bloque">
 				Ingrese <strong>Capítulo <span><?= sizeof($capitulos)+1 ?></span></strong>:
 			</label>
-			<input type="text" id="txtCapitulo" class="como-bloque" onkeyup="javascript:this.value=this.value.toUpperCase();">
-			<a href="#" class="botones" id="btnAccept">
+			<input type="text" id="txtCapitulo" class="como-bloque">
+			<div class="edicion-boton" id="btnAccept">
 				<img src="img/aceptar.png" alt="Aceptar">
 				Aceptar
-			</a>
-			<a href="#" class="botones" id="btnCancel">
+			</div>
+			<div class="edicion-boton" id="btnCancel">
 				<img src="img/cancelar.png" alt="Cancelar">
 				Cancelar
-			</a>			
+			</div>			
 		</form>
 	</section>
 		
@@ -67,6 +72,7 @@ if( haIniciadoSesion() )
 	{
 ?>
 		<div class="contenedor">
+			<input type="radio" name="grupoRbtn" value="<?= $capitulos[$i][2] ?>" class="radiobtn" />
 			<img src="img/capitulo.png" alt="Capítulo" class="izquierda">
 			<p class="title"><strong>Capítulo <?= $capitulos[$i][2] ?>:</strong> <?= $capitulos[$i][1] ?></p>
 			<a href="articulos.php?cap=<?php echo $capitulos[$i][0] ?>"><img src="img/ir.png" alt="capítulo1" class="derecha"></a>

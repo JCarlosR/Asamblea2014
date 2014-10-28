@@ -1,10 +1,24 @@
-1. agregar funcionalidad enter a los botones aceptar
-1.1. Focus en el campo de texto de agregar
-2. poner en al parte superiro izquierda/derecha el nombre del usuario
-   y cerrar cesion en todas las ventanas
-3. poner siempre una liga para regresar al inicio
-4. exportar a pdf(plugin)
-5. agregar un boton impresion
-6. convertir el texto a mayusculas automaticamente
+Tareas siendo procesadas:
+- Exportar a pdf (30%)
+- Corregir CSS formulario
+- Menú lateral con los enlaces (25%)
+- Ícono de la impresora
+-- Agregar un boton impresion
+- Mini-Icon de cerrar sesión en all pages
+
 *no preocuparse en detalles tecnicos.
 *mostrar la funcionalidad
+
+Tareas con detalle extremo, a tratar luego del Beta:
+* Error 404 cuando variables GET son palabras (ocurre con nros grandes por ahora)
+* Usar JQuery.post( )
+* Agregar estilos diferentes para títulos, capítulos, artículos.
+* Cambiar nombre addTitle (en JS)
+
+Tareas completadas recientemente:
+* Agregar funcionalidad enter a los botones aceptar
+* Focus en el campo de texto de agregar
+* Convertir el texto a mayusculas automaticamente
+* Poner en la parte superior izquierda nombre del usuario
+* Siempre una liga para regresar al inicio
+* Contenido de los artículos se muestra parcialmente

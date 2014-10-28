@@ -14,16 +14,16 @@ CREATE TABLE asambleista(
 CREATE TABLE modificacion(
 	ID_Modificacion int AUTO_INCREMENT PRIMARY KEY,
 	fecha datetime NOT NULL,
-	asamUsername varchar(20),
+	asamUsername varchar(20) NOT NULL,
 	FOREIGN KEY (asamUsername) REFERENCES asambleista(asamUsername)
 );
 
 -- Creando tabla titulo
 CREATE TABLE titulo(
 	ID_Titulo int AUTO_INCREMENT PRIMARY KEY,
-	descripcionTit varchar (99),
+	descripcionTit varchar (99) NOT NULL,
 	numeroTit int NOT NULL,
-	ID_Modificacion int,
+	ID_Modificacion int NOT NULL,
 	FOREIGN KEY (ID_Modificacion) REFERENCES modificacion(ID_Modificacion)
 );
 

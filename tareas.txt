@@ -1,7 +1,7 @@
 Tareas siendo procesadas:
 - Exportar a pdf (30%)
-- Corregir CSS formulario
-- Menú lateral con los enlaces (25%)
+- Corregir CSS formulario (20%)
+- Menú lateral con los enlaces (45%)
 - Ícono de la impresora
 -- Agregar un boton impresion
 - Mini-Icon de cerrar sesión en all pages

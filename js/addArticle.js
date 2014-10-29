@@ -1,15 +1,16 @@
-$('#btnGuardar').on('click', agregarTitulo);
+$('#btnGuardar').on('click', agregarArticulo);
 
-var nroTit, nroCap, contenido;
-function agregarTitulo() 
+var nroTit, nroCap, idCap, contenido;
+function agregarArticulo() 
 {   
-	nroTit = $("span:first").text()
-	nroCap = $("span:last").text()
+	idCap = $("span:first").text();
+	nroTit = $("span:nth-child(2)").text();
+	nroCap = $("span:last").text();
 	contenido = $("#txtContenido").val();
 	// Realizar peticion HTTP
 	peticion_http.open('POST', './scripts/agregarArticulo.php', true);
 	peticion_http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	peticion_http.send('contenido='+contenido+'&nroTit='+nroTit+'&nroCap='+nroCap);
+	peticion_http.send('contenido='+contenido+'&nroTit='+nroTit+'&nroCap='+nroCap+'&idCap='+idCap);
 
 	peticion_http.onreadystatechange = muestraContenido;
 }
@@ -20,7 +21,7 @@ function muestraContenido()
     	if(peticion_http.status == 200)
     	{
     		alert("El artículo se agregó correctamente.");
-    		location.href = 'articulos.php?cap='+nroCap;
+    		location.href = 'articulos.php?cap='+idCap;
     	} else alert("Ocurrió un error inesperado.");
 }
  

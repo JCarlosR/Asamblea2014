@@ -11,8 +11,8 @@ function teclaPresionada(e)
 var nroCap, descrip;
 function agregarCapitulo() 
 {   
-	nroTit = $("span:first").text()
-	nroCap = $("span:last").text()
+	nroTit = $("span:first").text();
+	nroCap = $("span:last").text();
 	descrip = $("#txtCapitulo").val();
 	// Realizar peticion HTTP
 	peticion_http.open('POST', './scripts/agregarCapitulo.php', true);
@@ -47,6 +47,7 @@ window.onload = function ()
 
 function mostrarNuevoCapitulo(idNuevo) 
 {
-	var esto = '<div class="contenedor"><img src="img/capitulo.png" alt="Capítulo" class="izquierda"><p class="title"><strong>Capítulo '+nroCap+':</strong> '+descrip+'</p><a href="articulos.php?cap='+idNuevo+'"><img src="img/ir.png" alt="capítulo1" class="derecha"></a></div>';
+	var esto = '<div class="contenedor"><input type="radio" name="grupoRbtn" value="'+idNuevo+'" class="radiobtn" /><img src="img/capitulo.png" alt="Capítulo" class="izquierda"><p class="title"><strong>Capítulo '+nroCap+':</strong> '+descrip+'</p><a href="articulos.php?cap='+idNuevo+'"><img src="img/ir.png" alt="capítulo1" class="derecha"></a></div>';
 	document.getElementsByClassName("seccion-titulos")[0].innerHTML += esto;
+	$("span:last").text(++nroCap);
 }

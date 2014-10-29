@@ -21,12 +21,12 @@ if( haIniciadoSesion() )
 		<label for="txtUser" class="como-bloque">
 			Nombre de usuario:
 		</label>
-		<input type="text" name="txtUser">	
+		<input type="text" name="txtUser" class="areaRedaccion">	
 
 		<label for="txtPass" class="como-bloque">
 			Contraseña:
 		</label>
-		<input type="password" name="txtPass">
+		<input type="password" class="areaRedaccion" name="txtPass">
 
 		<button class="edicion-boton como-bloque" onclick="document.forms[0].submit()">
 			<img src="img/iniciar.png" alt="Iniciar sesión">

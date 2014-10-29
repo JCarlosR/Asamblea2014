@@ -5,6 +5,11 @@ Tareas siendo procesadas:
 - Ícono de la impresora
 -- Agregar un boton impresion
 - Mini-Icon de cerrar sesión en all pages
+* Arcadio hace la maquetación del INDEX 
+* Generar PDF (yo) - Editar Tit y Cap
+* Agregar el tit y tratar la excepcion de q no hay titulos antes o caps antes
+
+
 
 *no preocuparse en detalles tecnicos.
 *mostrar la funcionalidad
@@ -14,6 +19,8 @@ Tareas con detalle extremo, a tratar luego del Beta:
 * Usar JQuery.post( )
 * Agregar estilos diferentes para títulos, capítulos, artículos.
 * Cambiar nombre addTitle (en JS)
+** Pasar valores de PHP a JS sin tener que imprimirlos como HTML (span)
+** Agregar atributo ULTIMO que sea boolean para evitar operacionesa adicionales
 
 Tareas completadas recientemente:
 * Agregar funcionalidad enter a los botones aceptar

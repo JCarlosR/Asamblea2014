@@ -25,6 +25,10 @@ else
 			<img src="img/editar.png" alt="Editar">
 			Editar
 		</div>
+		<a href="generate/estatuto.php" class="menu-boton" id="btnLogout">
+			<img src="img/print.png" alt="Imprimir">
+			Impresión
+		</a>
 		<a href="scripts/cerrar-sesion.php" class="menu-boton" id="btnLogout">
 			<img src="img/cerrar.png" alt="Registrarse">
 			Cerrar sesión

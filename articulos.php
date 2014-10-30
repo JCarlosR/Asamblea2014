@@ -60,6 +60,7 @@ if( haIniciadoSesion() )
 		</div>		
 <?php 
 	}
+	
 ?>
 	</section>
 <!--	<div class="contenedor">
@@ -72,5 +73,8 @@ if( haIniciadoSesion() )
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
+	<?php 
+	require_once 'menu-lateral.html';
+?>
 </body>
 </html>

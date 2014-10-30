@@ -92,5 +92,8 @@ if( haIniciadoSesion() )
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/addChapter.js"></script>
+<?php
+	require_once 'menu-lateral.html';
+?>
 </body>
 </html>

@@ -13,15 +13,43 @@
 	$resultSet = mysqli_query($con, "SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$_POST['idCap']);
 	$ultNroArt = mysqli_fetch_row($resultSet)[0];
 
-	while($ultNroArt==0 && $_POST['nroCap']<=0) // Vamos por el ultNroArt del cap anterior
-	{
-			$resultSet = mysqli_query($con, "SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".(--$_POST['nroCap']));
+	$nroCap=$_POST['nroCap'];
+	$nroTit=$_POST['nroTit'];
+	/*echo "SELECT MAX(ID_Titulo) FROM titulo WHERE numeroTit=".$nroTit;
+	$resultSet = mysqli_query($con,"SELECT MAX(ID_Titulo) FROM titulo WHERE numeroTit=".$nroTit);
+	$idTit = mysqli_fetch_row($resultSet)[0];*/
+
+	while($ultNroArt==0 && $nroCap>0 ) // Vamos por el ultNroArt del cap anterior
+		{	//echo "SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".(--$nroCap)." AND ID_Titulo=".$idTit;
+			$resultSet = mysqli_query($con, "SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".(--$nroCap));
 			$idCapAnterior = mysqli_fetch_row($resultSet)[0];
 
 			$resultSet = mysqli_query($con, "SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$idCapAnterior);
-			$ultNroArt = mysqli_fetch_row($resultSet)[0];
-		
-	}
+			$ultNroArt=mysqli_fetch_row($resultSet)[0];		
+
+		}
+/*	do
+	{
+		while($ultNroArt==0 && $nroCap>0 ) // Vamos por el ultNroArt del cap anterior
+		{	//echo "SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".(--$nroCap)." AND ID_Titulo=".$idTit;
+			$resultSet = mysqli_query($con, "SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".(--$nroCap)." AND ID_Titulo=".$idTit);
+			$idCapAnterior = mysqli_fetch_row($resultSet)[0];
+
+			$resultSet = mysqli_query($con, "SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$idCapAnterior);
+			if( empty($resultSet) )
+			{
+				$ultNroArt = 0;
+			}
+			else {
+				if($fila=mysqli_fetch_row($resultSet))
+					$ultNroArt = $fila[0];
+				else $ultNroArt =
+			} 							
+		}				
+		$resultSet = mysqli_query($con,"SELECT MAX(ID_Titulo) FROM titulo WHERE numeroTit=".(--$nroTit));
+		$idTit = mysqli_fetch_row($resultSet)[0];
+		$nroCap = mysqli_query($con,"SELECT MAX(numeroCap) FROM capitulo WHERE ID_Titulo=".$idTit);			
+	} while ($ultNroArt==0 && $nroTit>0);*/ 
 
 	++$ultNroArt; // Dado que el que vamos a agregar será el último ahora
 	// Agregamos el nuevo artículo

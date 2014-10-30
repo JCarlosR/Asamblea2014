@@ -3,9 +3,9 @@ $('#btnGuardar').on('click', agregarArticulo);
 var nroTit, nroCap, idCap, contenido;
 function agregarArticulo() 
 {   
-	idCap = $("span:first").text();
-	nroTit = $("span:nth-child(2)").text();
-	nroCap = $("span:last").text();
+	idCap = $("#idCap").text();
+	nroTit = $("#nroTit").text();
+	nroCap = $("#nroCap").text();
 	contenido = $("#txtContenido").val();
 	// Realizar peticion HTTP
 	peticion_http.open('POST', './scripts/agregarArticulo.php', true);
@@ -24,7 +24,7 @@ function muestraContenido()
     		location.href = 'articulos.php?cap='+idCap;
     	} else alert("Ocurrió un error inesperado.");
 }
- 
+
 window.onload = function () 
 {
 	if(window.XMLHttpRequest) {

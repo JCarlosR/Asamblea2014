@@ -122,13 +122,15 @@ function getArticulos($c)
 	global $conexion; // Para evitar escribir $GLOBALS['conexion']
 	$resulSet = mysqli_query($conexion, "SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$c);
 	$maxNumeroArt = mysqli_fetch_row($resulSet)[0];
+	$j = 0;
 	for($i=1; $i<=$maxNumeroArt; ++$i)
 	{
 		$resulSet = mysqli_query($conexion, "
 			SELECT * FROM articulo WHERE ID_Articulo =  
 			(SELECT MAX(ID_Articulo) FROM articulo WHERE numeroArt=".$i." AND ID_Capitulo=".$c.")
 		");
-		$articulos[$i-1] = mysqli_fetch_row($resulSet);
+		if( $fila = mysqli_fetch_row($resulSet) )
+			$articulos[$j++] = $fila;
 	}
 
 /*	$resultado = mysqli_query($GLOBALS['conexion'], "SELECT * FROM articulo WHERE ID_Capitulo=".$c." ORDER BY numeroArt ASC");

@@ -9,7 +9,6 @@ Tareas siendo procesadas:
 - Guardar como PDF | Imprimir | Enviar por correo
 
 Corregir enlace luego de editar
-Corregir enter para 
 
 * no preocuparse en detalles tecnicos.
 * mostrar la funcionalidad

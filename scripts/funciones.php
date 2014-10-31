@@ -12,13 +12,10 @@ function abrirConex()
 
 function cerrarConex($result)
 {
-	// Cerrar conexión a la BD
-	mysqli_free_result($result); 
-	mysqli_close($GLOBALS['conexion']);
-}
+	if(func_num_args()>0)
+		mysqli_free_result($result); 
 
-function cerrarConex()
-{
+	// Cerrar conexión a la BD
 	mysqli_close($GLOBALS['conexion']);
 }
 

@@ -1,5 +1,20 @@
-<?php 
+<?php // ¡ Se reciben nros, no ids !
 	include ('../scripts/funciones.php');	
+	if( !haIniciadoSesion() )
+		header('Location: login.php');
+	if( !isset($_GET['tit']) )
+		header('Location: estauto.php');
+	// Inició sesión y especificó tit:
+	$tit = intval($_GET['tit']);
+	if( $tit<=0 )
+		header('Location: ../404.html');
+	else {
+		if( isset($_GET['cap']) )
+		{	// Si $cap es 0 mostrar TODO 1 título.
+			$cap = intval($_GET['cap']);
+			if($cap<0) $cap = 0;
+		} else $cap = 0;
+	}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,24 +27,53 @@
 <body>
 	<header>
 		<h1>Estatuto UNT</h1>
-		<h2>Versión 2014 - Asambleista2014 Software</h2>
-	</header>
-<?php
-	$titulos = getTitulos();
-	for($i=0; $i<sizeof($titulos); ++$i)
+<?php 
+	if($cap==0)
 	{
 ?>
+		<h2>Fragmento: "Título <?= $tit ?>"</h2>
+<?php
+	} else {
+?>
+		<h2>Fragmento: "Capítulo <?= $cap ?> del Título <?= $tit ?>"</h2>
+<?php
+	}
+?>
+	</header>
+<?php
+	$idTit = getIdTitActivo($tit);
+	if($idTit)
+		$infoTit = getInfoTit($idTit); 
+	else header('Location: ../404.html');
+?>
 	<section class="seccion-titulo">
-		<h3>Título <?php echo $titulos[$i][2] ?>: <?php echo $titulos[$i][1] ?></h3>
+		<h3>Título <?php echo $infoTit[2] ?>: <?php echo $infoTit[1] ?></h3>
 <?php 
-		$capitulos = getCapitulos($titulos[$i][0]);
+		if($cap==0)
+		// So pro... It works with an array or an element.
+			$capitulos = getCapitulos($idTit);
+		else {
+			$idCap = getIdCapActivo($cap, $tit);
+			if($idCap)
+				$capitulos[0] = getInfoCap($idCap);			
+			else header('Location: ../404.html');
+		}
 		for($j=0; $j<sizeof($capitulos); ++$j)
 		{
+			escribirCapitulo($capitulos[$j]);
+		}
 ?>
-			<article class="capitulo">
-				<h4>Capítulo <?php echo $capitulos[$j][2] ?>: <?php echo $capitulos[$j][1] ?></h4>
+	</section>	
+
+
 <?php 
-			$articulos = getArticulos($capitulos[$j][0]);
+	function escribirCapitulo($infoCap)
+	{
+?>
+		<article class="capitulo">
+			<h4>Capítulo <?php echo $infoCap[2] ?>: <?php echo $infoCap[1] ?></h4>
+<?php 
+			$articulos = getArticulos($infoCap[0]);
 			for($k=0; $k<sizeof($articulos); ++$k)
 			{
 ?>				
@@ -42,63 +86,9 @@
 <?php 
 			}
 ?>
-			</article>
+		</article>
 <?php
-		}
-?>
-	</section>	
-<?php		
 	}
 ?>
-<!--
-	<section class="seccion-titulo">
-		<h3>Título: BLABLABLA</h3>
-		<article class="capitulo">
-			<h4>Capítulo 1: BLEBLEBLE</h4>
-			<div class="articulo">
-				<span>Artículo 1.</span>
-				<p class="contenido">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi sed qui, dolore voluptate atque? Consequatur quas tenetur harum dolor, explicabo ullam ipsa, est commodi dolore illum vel consequuntur neque id!
-				</p>
-			</div>
-		</article>
-				<article class="capitulo">
-			<h4>Capítulo 2: BLEBLEBLE</h4>
-			<div class="articulo">
-				<span>Artículo 1.</span>
-				<p class="contenido">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi sed qui, dolore voluptate atque? Consequatur quas tenetur harum dolor, explicabo ullam ipsa, est commodi dolore illum vel consequuntur neque id!
-				</p>
-			</div>
-			<div class="articulo">
-				<span>Artículo 2.</span>
-				<p class="contenido">
-					Excepturi sed qui, dolore voluptate atque? Consequatur quas tenetur harum dolor, explicabo ullam ipsa, est commodi dolore illum vel consequuntur neque id!
-				</p>
-			</div>			
-		</article>
-		<article class="capitulo">
-			<h4>Capítulo 3: BLEBLEBLE</h4>
-			<div class="articulo">
-				<span>Artículo 1.</span>
-				<p class="contenido">
-					Ullam ipsa, est commodi dolore illum vel consequuntur neque id!
-				</p>
-			</div>
-			<div class="articulo">
-				<span>Artículo 2.</span>
-				<p class="contenido">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo ullam ipsa, est commodi dolore illum vel consequuntur neque id!
-				</p>
-			</div>
-			<div class="articulo">
-				<span>Artículo 3.</span>
-				<p class="contenido">
-					Excepturi sed qui, dolore voluptate atque? Consequatur quas tenetur harum dolor, explicabo ullam ipsa, est commodi dolore illum vel consequuntur neque id!
-				</p>
-			</div>						
-		</article>
-	</section>
--->
 </body>
 </html>

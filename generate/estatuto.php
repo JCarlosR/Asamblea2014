@@ -12,7 +12,8 @@
 <body>
 	<header>
 		<h1>Estatuto UNT</h1>
-		<h2>Versión 2014 - Asambleista2014 Software</h2>
+		<h2>Versión 2014</h2>
+		<p>Última modificación: <?= getFirstValue("SELECT fecha FROM modificacion ORDER BY ID_Modificacion DESC LIMIT 1") ?></p>
 	</header>
 <?php
 	$titulos = getTitulos();

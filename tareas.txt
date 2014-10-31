@@ -1,12 +1,15 @@
 Tareas siendo procesadas:
 - Exportar a pdf: Juarez
-- INDEX 
-- Posibilidad de editar inline (viendo el estatuto si se tienen los permisos)
+- INDEX (Arcadio y Soles)
+- APARIENCIA INTERNA (Remso)
+- Posibilidad de editar inline (si se tienen los permisos)
 - Inhabilitar botón
-- Fecha de la última modificación (estatuto)
 - Evaluar conflictos de post
 - Mini-Icon de cerrar sesión en all pages
 - Guardar como PDF | Imprimir | Enviar por correo
+
+Corregir enlace luego de editar
+Corregir enter para 
 
 * no preocuparse en detalles tecnicos.
 * mostrar la funcionalidad
@@ -25,3 +28,4 @@ Tareas completadas recientemente:
 * Menú lateral con los enlaces
 * Solucionado menú lateral cuando no habían entradas
 * Flechas desbordantes quitadas
+* Fecha de la última modificación (estatuto)

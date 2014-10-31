@@ -4,12 +4,12 @@ function funcPrincipal()
 {
 	$('#btnAdd').on('click', mostrarNuevo);
 	$('#btnCancel').on('click', ocultarEditar);
-	$('.formAjax').on('submit', envioForm);
+	$(document).on('submit', '.formAjax', evitarEnvio);
 
 	$('.radiobtn:first').attr('checked', true);
 }
 
-function envioForm()
+function evitarEnvio()
 {
 	event.preventDefault();
 }

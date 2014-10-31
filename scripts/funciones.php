@@ -10,9 +10,9 @@ function abrirConex()
 	mysqli_set_charset($conexion, 'utf8');
 }
 
-function cerrarConex($result)
+function cerrarConex($result='')
 {
-	if(func_num_args()>0)
+	if($result!='')
 		mysqli_free_result($result); 
 
 	// Cerrar conexión a la BD
@@ -73,19 +73,19 @@ function getTitulos()
 	return $titulos;
 }
 
-function getCapitulos($t)
+function getCapitulos($idTit)
 {
 	abrirConex();
 	// Obtener todos los capítulos del título t (últimas modificaciones)
 	global $conexion; // Para evitar escribir $GLOBALS['conexion']
 	// AL EDITAR TÍTULOS, se crea 1 nuevo título que debería heredar los caps que apuntaban al título modificado, y quitar el apunte a ese
-	$resulSet = mysqli_query($conexion, "SELECT MAX(numeroCap) FROM capitulo WHERE ID_Titulo=".$t);
+	$resulSet = mysqli_query($conexion, "SELECT MAX(numeroCap) FROM capitulo WHERE ID_Titulo=".$idTit);
 	$maxNumeroCap = mysqli_fetch_row($resulSet)[0];
 	for($i=1; $i<=$maxNumeroCap; ++$i)
 	{
 		$resulSet = mysqli_query($conexion, "
 			SELECT * FROM capitulo WHERE ID_Capitulo = 
-			(SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".$i." AND ID_Titulo=".$t.")
+			(SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".$i." AND ID_Titulo=".$idTit.")
 		");
 		$capitulos[$i-1] = mysqli_fetch_row($resulSet);
 	}
@@ -97,11 +97,11 @@ function getCapitulos($t)
 	return $capitulos;	
 }
 
-function getInfoTit($t)
+function getInfoTit($idTit)
 {
 	abrirConex();
 	global $conexion; // Para evitar escribir $GLOBALS['conexion']
-	$resultado = mysqli_query($conexion, "SELECT * FROM titulo WHERE ID_Titulo=".$t);
+	$resultado = mysqli_query($conexion, "SELECT * FROM titulo WHERE ID_Titulo=".$idTit);
 	$fila = mysqli_fetch_row($resultado);
 	cerrarConex($resultado);
 	return $fila;
@@ -131,10 +131,11 @@ function getArticulos($c)
 	return $articulos;	
 }
 
-function getInfoCap($c)
+function getInfoCap($idCap)
 {
+	global $conexion;
 	abrirConex();
-	$resultado = mysqli_query($GLOBALS['conexion'], "SELECT * FROM capitulo WHERE ID_Capitulo=".$c);
+	$resultado = mysqli_query($conexion, "SELECT * FROM capitulo WHERE ID_Capitulo=".$idCap);
 	$fila = mysqli_fetch_row($resultado);
 	cerrarConex($resultado);
 	return $fila;
@@ -144,28 +145,29 @@ function getInfoCap($c)
 
 function ejecutarQuery($query)
 {
+	global $conexion;
 	abrirConex();
-	mysqli_query($query);
+	mysqli_query($conexion, $query);
 	cerrarConex();
 }
 
 function getResultSet($query)
 {
+	global $conexion;
 	abrirConex();
-	$resultSet = mysqli_query($query);
-	$copy = $resulSet;
-	cerrarConex($resultSet);
-	return $copy;
+	$resultSet = mysqli_query($conexion, $query);
+	cerrarConex();
+	return $resultSet;
 }
 
 function getFirstRow($query)
 {
-	return getResultSet($query)[0];
+	return mysqli_fetch_row( getResultSet($query) );
 }
 
 function getFirstValue($query)
 {
-	return mysqli_fetch_row(getFirstRow($query));
+	return getFirstRow($query)[0];		
 }
 
 /* ÚLTIMO NRO DE TIT, ART */
@@ -184,7 +186,7 @@ function getMaxNroArt($idCap)
 
 function getIdTitActivo($nroTit)
 {
-	return getFirstValue("SELECT MAX(ID_Titulo) FROM titulo WHERE numeroTit=".$nroCap);	
+	return getFirstValue("SELECT MAX(ID_Titulo) FROM titulo WHERE numeroTit=".$nroTit);	
 }
 
 function getIdCapActivo($nroCap, $nroTit)

@@ -59,9 +59,9 @@ else
 ?>
 	<div class="contenedor">
 		<a href="capitulos.php?title=<?php echo $titulos[$i][0] ?>">
-		<input type="radio" name="grupoRbtn" value="<?= $titulos[$i][2] ?>" class="radiobtn" />
-		<img src="img/titulo.png" alt="Título" class="izquierda">
-		<p class="title"><strong>Título <?= $titulos[$i][2] ?>:</strong> <?= $titulos[$i][1] ?></p>
+			<input type="radio" name="grupoRbtn" value="<?= $titulos[$i][2] ?>" class="radiobtn" />
+			<img src="img/titulo.png" alt="Título" class="izquierda">
+			<p class="title"><strong>Título <?= $titulos[$i][2] ?>:</strong> <?= $titulos[$i][1] ?></p>
 		</a>
 	</div>	
 <?php

@@ -48,12 +48,12 @@ function muestraContenido()
  
 function mostrarNuevoTitulo(idNuevo) 
 {
-	var nuevoContenedor = '<div class="contenedor"><input type="radio" name="grupoRbtn" value="'+nroTit+'" class="radiobtn" /><img src="img/titulo.png" alt="Título" class="izquierda"><p class="title"><strong>Título '+nroTit+':</strong> '+descrip+'</p><a href="capitulos.php?title='+idNuevo+'"><img src="img/ir.png" alt="titulo1" class="derecha"></a></div>';
+	var nuevoContenedor = '<div class="contenedor"><a href="capitulos.php?title='+idNuevo+'"><input type="radio" name="grupoRbtn" value="'+nroTit+'" class="radiobtn" /><img src="img/titulo.png" alt="Título" class="izquierda"><p class="title"><strong>Título '+nroTit+':</strong> '+descrip+'</p></a></div>';
 	document.getElementsByClassName("seccion-titulos")[0].innerHTML += nuevoContenedor;
 	$("span:first").text(++nroTit);
 }
 
-var nroSelected, contEditando, nuevaDescrip;
+var nroSelected, contEditando;
 function mostrarEditar() 
 {
 	if( $('#panel').is(":visible")  )
@@ -66,18 +66,17 @@ function mostrarEditar()
 
 	$('<section class="editar" id="panel"><form class="formAjax" action=""><label for="txtNuevo" class="como-bloque">Ingrese <strong>Título <span>'+nroSelected+'</span></strong>:</label><input type="text" id="txtNuevo" class="como-bloque"><div class="edicion-boton" id="btnGoEdit"><img src="img/aceptar.png" alt="Aceptar">Aceptar</div><div class="edicion-boton" id="btnCancelEdit"><img src="img/cancelar.png" alt="Cancelar">Cancelar</div></form></section>').insertAfter(contEditando);
 	$('#panel').show(); // Ya que .editar es hidden por default
+	$('#txtNuevo').focus();
 
 	$('#btnCancelEdit').on('click', function () {
 		$('#panel').remove();
 	});
 	
 	$('#btnGoEdit').on('click', function () {
-		nuevaDescrip = $('#txtNuevo').val();
-		$('#panel').remove();
 		modificarTitulo();
 	});	
 
-	$('#txtNuevo').on('click', keyUpEdicion);
+	$(document).on('keyup', '#txtNuevo', keyUpEdicion);
 }
 
 function keyUpEdicion(e) 
@@ -87,14 +86,18 @@ function keyUpEdicion(e)
     else this.value = this.value.toUpperCase();
 }
 
+var nuevaDescrip;
 function modificarTitulo() 
 {
+	nuevaDescrip = $('#txtNuevo').val();
+	$('#panel').remove();	
 	// Realizar peticion HTTP
 	peticion_http.open('POST', './scripts/agregarTitulo.php', true);
 	peticion_http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	peticion_http.send('descripcion='+nuevaDescrip+'&nroTit='+nroSelected);
 
 	peticion_http.onreadystatechange = actualizaContenido;
+
 	// No es necesario quitar nada ya que se usó remove sobre #panel
 }
 
@@ -102,8 +105,9 @@ function actualizaContenido()
 {
 	if(peticion_http.readyState == 4) 
     	if(peticion_http.status == 200)
-    	{
+    	{	// contEditando es <a>
 			$(contEditando).children('.title').html('<strong>Título '+nroSelected+':</strong> '+nuevaDescrip);
+			$(contEditando).attr('href', 'capitulos.php?title='+peticion_http.responseText);
     		alert("El título se modificó correctamente.");
     	} else alert("Ocurrió un error inesperado.");	
 }

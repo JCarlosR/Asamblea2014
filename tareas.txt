@@ -1,31 +1,27 @@
 Tareas siendo procesadas:
-- Exportar a pdf (30%)
-- Corregir CSS formulario (20%)
-- Menú lateral con los enlaces (45%)
-- Ícono de la impresora
--- Agregar un boton impresion
+- Exportar a pdf: Juarez
+- INDEX 
+- Posibilidad de editar inline (viendo el estatuto si se tienen los permisos)
+- Inhabilitar botón
+- Fecha de la última modificación (estatuto)
+- Evaluar conflictos de post
 - Mini-Icon de cerrar sesión en all pages
-* Arcadio hace la maquetación del INDEX 
-* Generar PDF (yo) - Editar Tit y Cap
-* Agregar el tit y tratar la excepcion de q no hay titulos antes o caps antes
+- Guardar como PDF | Imprimir | Enviar por correo
 
-
-
-*no preocuparse en detalles tecnicos.
-*mostrar la funcionalidad
+* no preocuparse en detalles tecnicos.
+* mostrar la funcionalidad
 
 Tareas con detalle extremo, a tratar luego del Beta:
 * Error 404 cuando variables GET son palabras (ocurre con nros grandes por ahora)
 * Usar JQuery.post( )
 * Agregar estilos diferentes para títulos, capítulos, artículos.
-* Cambiar nombre addTitle (en JS)
 ** Pasar valores de PHP a JS sin tener que imprimirlos como HTML (span)
 ** Agregar atributo ULTIMO que sea boolean para evitar operacionesa adicionales
+* Agregar el art y tratar la excepcion de q no hay titulos/caps antes
 
 Tareas completadas recientemente:
-* Agregar funcionalidad enter a los botones aceptar
-* Focus en el campo de texto de agregar
-* Convertir el texto a mayusculas automaticamente
-* Poner en la parte superior izquierda nombre del usuario
-* Siempre una liga para regresar al inicio
-* Contenido de los artículos se muestra parcialmente
+* Ícono de ver estatuto in all pages
+* Agregadas funciones utilitarias
+* Menú lateral con los enlaces
+* Solucionado menú lateral cuando no habían entradas
+* Flechas desbordantes quitadas

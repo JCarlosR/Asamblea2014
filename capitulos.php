@@ -47,6 +47,10 @@ if( haIniciadoSesion() )
 			<img src="img/editar.png" alt="Editar">
 			Editar
 		</div>		
+		<a href="generate/estatuto.php" class="menu-boton" id="btnLogout">
+			<img src="img/exportar.png" alt="Imprimir">
+			Ver estatuto
+		</a>		
 	</nav>	
 
 	<section class="editar">
@@ -72,10 +76,11 @@ if( haIniciadoSesion() )
 	{
 ?>
 		<div class="contenedor">
+			<a href="articulos.php?cap=<?php echo $capitulos[$i][0] ?>">
 			<input type="radio" name="grupoRbtn" value="<?= $capitulos[$i][2] ?>" class="radiobtn" />
 			<img src="img/capitulo.png" alt="Capítulo" class="izquierda">
 			<p class="title"><strong>Capítulo <?= $capitulos[$i][2] ?>:</strong> <?= $capitulos[$i][1] ?></p>
-			<a href="articulos.php?cap=<?php echo $capitulos[$i][0] ?>"><img src="img/ir.png" alt="capítulo1" class="derecha"></a>
+			</a>
 		</div>
 <?php 
 	}

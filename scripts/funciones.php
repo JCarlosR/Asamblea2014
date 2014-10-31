@@ -4,15 +4,21 @@ $conexion = null;
 
 function abrirConex()
 {
+	global $conexion;
 	// Conexión con el servidor de base de datos MySQL
-	$GLOBALS['conexion'] = mysqli_connect('localhost','root','','asamblea2014');
-	mysqli_set_charset($GLOBALS['conexion'], 'utf8');
+	$conexion = mysqli_connect('localhost','root','','asamblea2014');
+	mysqli_set_charset($conexion, 'utf8');
 }
 
 function cerrarConex($result)
 {
 	// Cerrar conexión a la BD
 	mysqli_free_result($result); 
+	mysqli_close($GLOBALS['conexion']);
+}
+
+function cerrarConex()
+{
 	mysqli_close($GLOBALS['conexion']);
 }
 
@@ -63,12 +69,6 @@ function getTitulos()
 		$titulos[$i-1] = mysqli_fetch_row($resulSet);
 	}
 	
-/*	$resultado = mysqli_query($GLOBALS['conexion'], "SELECT * FROM titulo ORDER BY numeroTit ASC");
-	$i = 0;
-	while( $fila = mysqli_fetch_row($resultado) )
-	{
-		$titulos[$i] = $fila; ++$i;
-	}	*/
 	if( !isset($titulos) ) 
 		$titulos = array();
 
@@ -93,12 +93,6 @@ function getCapitulos($t)
 		$capitulos[$i-1] = mysqli_fetch_row($resulSet);
 	}
 
-/*	$resultado = mysqli_query($GLOBALS['conexion'], "SELECT * FROM capitulo WHERE ID_Titulo=".$t." ORDER BY numeroCap ASC");
-	$i = 0;
-	while( $fila = mysqli_fetch_row($resultado) )
-	{
-		$capitulos[$i] = $fila; ++$i;
-	}	*/
 	if( !isset($capitulos) ) 
 		$capitulos = array();
 
@@ -133,12 +127,6 @@ function getArticulos($c)
 			$articulos[$j++] = $fila;
 	}
 
-/*	$resultado = mysqli_query($GLOBALS['conexion'], "SELECT * FROM articulo WHERE ID_Capitulo=".$c." ORDER BY numeroArt ASC");
-	$i = 0;
-	while( $fila = mysqli_fetch_row($resultado) )
-	{
-		$articulos[$i] = $fila; ++$i;
-	}	*/
 	if( !isset($articulos) ) 
 		$articulos = array();
 
@@ -154,5 +142,72 @@ function getInfoCap($c)
 	cerrarConex($resultado);
 	return $fila;
 }
+
+/* FUNCIONES UTILITARIAS */
+
+function ejecutarQuery($query)
+{
+	abrirConex();
+	mysqli_query($query);
+	cerrarConex();
+}
+
+function getResultSet($query)
+{
+	abrirConex();
+	$resultSet = mysqli_query($query);
+	$copy = $resulSet;
+	cerrarConex($resultSet);
+	return $copy;
+}
+
+function getFirstRow($query)
+{
+	return getResultSet($query)[0];
+}
+
+function getFirstValue($query)
+{
+	return mysqli_fetch_row(getFirstRow($query));
+}
+
+/* ÚLTIMO NRO DE TIT, ART */
+
+function getMaxNroTit()
+{
+	return getFirstValue("SELECT MAX(numeroTit) FROM titulo");	
+}
+
+function getMaxNroArt($idCap)
+{
+	return getFirstValue("SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$idCap);
+}
+
+/* ÚLTIMA VERSIÓN PARA UN NRO DETERMINADO */
+
+function getIdTitActivo($nroTit)
+{
+	return getFirstValue("SELECT MAX(ID_Titulo) FROM titulo WHERE numeroTit=".$nroCap);	
+}
+
+function getIdCapActivo($nroCap, $nroTit)
+{
+	$idTit = getIdTitActivo($nroTit);
+	return getFirstValue("SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".$nroCap." AND ID_Titulo=".$idTit);	
+}
+
+function getIdArtActivo($nroArt, $nroCap, $nroTit)
+{
+	$idCap = getIdCapActivo($nroCap, $nroTit);
+	return getFirstValue("SELECT MAX(ID_Articulo) FROM articulo WHERE numeroArt=".$nroArt." AND ID_Capitulo=".$idCap);		
+}
+
+/* OBTENER AGREGADOS RIGHT NOW */
+
+function getLastTit()
+{
+	return getFirstValue("SELECT MAX(ID_Titulo) FROM titulo");
+}
+
 
 ?>

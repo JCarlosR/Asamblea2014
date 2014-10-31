@@ -3,9 +3,9 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: center;
-	width: 100%;
 	background: rgba(232, 249, 233, 0.9);
-	overflow: hidden;
+	overflow-x: hidden;
+	background: rgba(0, 200, 190, 0.2);
 }
 
 a {
@@ -44,9 +44,10 @@ label {
 }
 
 .seccion-titulos {
-	background: rgba(0, 200, 190, 0.2);
+
 	float: left;
 	width: 99%;
+	min-height: 1px;
 }
 
 .menu-boton {
@@ -88,13 +89,18 @@ label {
 }
 
 .contenedor {
-	margin: 1em auto;
-	width: 60%;
-	border:dotted 2px;
+	display: inline-block;
+	margin: 1em 0.5em 0.5em;
+	min-width: 60%;
+	border: dotted 2px #0000FF;
 	border-radius: 15px;
-	border-color: #0000FF;
-	background: #A0DEDE;
-	
+	background: rgba(160, 222, 222, 0.45);
+	position: relative;	
+}
+
+.contenedor:hover {
+	background: rgba(180, 255, 242, 1);
+	border: solid 2px #0000FF;
 }
 
 .derecha {
@@ -108,7 +114,9 @@ label {
 }
 
 .title {
+	color: black;
 	display: inline-block;
+	overflow: initial;
 }
 
 .espacio-superior {
@@ -228,11 +236,11 @@ label {
     z-index: 0;
 }
 #sidebar {
+	display: none;
     background: #2290c9;
     position: absolute;
     text-align: left;
     width: 300px;
-    // height: 100%;
     right:  -300px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -275,6 +283,7 @@ label {
     -moz-box-sizing: border-box;
     position: relative;
 }
+
 .main-content .content {
     box-sizing: border-box;
     -moz-box-sizing: border-box;

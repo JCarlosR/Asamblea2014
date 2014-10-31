@@ -45,6 +45,10 @@ if( haIniciadoSesion() )
 		<a href="editarArticulo.php" class="menu-boton" id="btnEdit">
 			<img src="img/editar.png" alt="Editar">Editar
 		</a>
+		<a href="generate/estatuto.php" class="menu-boton" id="btnLogout">
+			<img src="img/exportar.png" alt="Imprimir">
+			Ver estatuto
+		</a>		
 	</nav>
 	
 	<section class="seccion-titulos">
@@ -56,7 +60,6 @@ if( haIniciadoSesion() )
 			<input type="radio" name="grupoRbtn" value="<?= $articulos[$i][2] ?>" class="radiobtn" />
 			<img src="img/documento.png" alt="Artículo" class="izquierda">
 			<p class="title"><strong>Artículo <?= $articulos[$i][2] ?>:</strong> <?= substr($articulos[$i][1],0,71)." ..." ?></p>
-			<a href="#"><img src="img/ir.png" alt="Artículo" class="derecha"></a>
 		</div>		
 <?php 
 	}

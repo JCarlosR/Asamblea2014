@@ -26,8 +26,8 @@ else
 			Editar
 		</div>
 		<a href="generate/estatuto.php" class="menu-boton" id="btnLogout">
-			<img src="img/print.png" alt="Imprimir">
-			Impresión
+			<img src="img/exportar.png" alt="Imprimir">
+			Ver estatuto
 		</a>
 		<a href="scripts/cerrar-sesion.php" class="menu-boton" id="btnLogout">
 			<img src="img/cerrar.png" alt="Registrarse">
@@ -58,11 +58,10 @@ else
 	{
 ?>
 	<div class="contenedor">
+		<a href="capitulos.php?title=<?php echo $titulos[$i][0] ?>">
 		<input type="radio" name="grupoRbtn" value="<?= $titulos[$i][2] ?>" class="radiobtn" />
 		<img src="img/titulo.png" alt="Título" class="izquierda">
 		<p class="title"><strong>Título <?= $titulos[$i][2] ?>:</strong> <?= $titulos[$i][1] ?></p>
-		<a href="capitulos.php?title=<?php echo $titulos[$i][0] ?>">
-			<img src="img/ir.png" alt="Título" class="derecha">
 		</a>
 	</div>	
 <?php
@@ -79,9 +78,7 @@ else
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/addTitles.js"></script>
-<?php 
-	require_once 'menu-lateral.html';
-?>
+	<script src="js/addTitle.js"></script>
+	<?php require_once 'menu-lateral.html'; ?>
 </body>
 </html>

@@ -2,14 +2,11 @@ $(document).on('ready', funcPrincipal);
 
 function funcPrincipal() 
 {
-	$('#btnAdd').on('click', mostrarEditar);
+	$('#btnAdd').on('click', mostrarNuevo);
 	$('#btnCancel').on('click', ocultarEditar);
 	$('.formAjax').on('submit', envioForm);
 
 	$('.radiobtn:first').attr('checked', true);
-	$('#btnEdit').on('click', function(){
-		alert("Pronto estará disponible EDITAR: "+$('.radiobtn:checked').val());
-	});
 }
 
 function envioForm()
@@ -17,10 +14,9 @@ function envioForm()
 	event.preventDefault();
 }
 
-function mostrarEditar() 
+function mostrarNuevo() 
 {
 	$('.editar').show();
-	// document.getElementById("txtTitulo").focus();
 	$('.formAjax input').focus();
 }
 

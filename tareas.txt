@@ -1,12 +1,12 @@
 Tareas siendo procesadas:
-- Exportar a pdf: Juarez
-- INDEX (Arcadio y Soles)
-- APARIENCIA INTERNA (Remso)
 - Posibilidad de editar inline (si se tienen los permisos)
 - Inhabilitar botón
+- Solucionar error editar capítulos
+- Agregar editar artículos
 - Evaluar conflictos de post
-- Mini-Icon de cerrar sesión en all pages
-- Guardar como PDF | Imprimir | Enviar por correo
+
+- Guardar como PDF (Juarez) | Imprimir (Soles) | Enviar por correo (Arcadio)
+- INDEX (Arcadio y Soles)
 
 Corregir enlace luego de editar
 
@@ -18,7 +18,6 @@ Tareas con detalle extremo, a tratar luego del Beta:
 * Usar JQuery.post( )
 * Agregar estilos diferentes para títulos, capítulos, artículos.
 ** Pasar valores de PHP a JS sin tener que imprimirlos como HTML (span)
-** Agregar atributo ULTIMO que sea boolean para evitar operacionesa adicionales
 * Agregar el art y tratar la excepcion de q no hay titulos/caps antes
 
 Tareas completadas recientemente:
@@ -28,3 +27,4 @@ Tareas completadas recientemente:
 * Solucionado menú lateral cuando no habían entradas
 * Flechas desbordantes quitadas
 * Fecha de la última modificación (estatuto)
+* Apariencia interna

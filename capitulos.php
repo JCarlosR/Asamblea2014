@@ -47,7 +47,7 @@ if( haIniciadoSesion() )
 			<img src="img/editar.png" alt="Editar">
 			Editar
 		</div>		
-		<a href="generate/estatuto.php" class="menu-boton" id="btnLogout">
+		<a href="generate/estatuto-edicion.php" class="menu-boton" id="btnLogout">
 			<img src="img/exportar.png" alt="Imprimir">
 			Ver estatuto
 		</a>		
@@ -85,13 +85,6 @@ if( haIniciadoSesion() )
 <?php 
 	}
 ?>
-<!--
-		<div class="contenedor">
-			<img src="img/capitulo.png" alt="Capítulo" class="izquierda">
-			<p class="title">Capítulo 1: Disposiciones generales</p>
-			<a href="articulos.php?cap="><img src="img/ir.png" alt="capítulo1" class="derecha"></a>
-		</div>
--->
 	</section>
 
 	<script src="js/jquery.js"></script>

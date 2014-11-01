@@ -25,7 +25,7 @@ else
 			<img src="img/editar.png" alt="Editar">
 			Editar
 		</div>
-		<a href="generate/estatuto.php" class="menu-boton" id="btnLogout">
+		<a href="generate/estatuto-edicion.php" class="menu-boton" id="btnLogout">
 			<img src="img/exportar.png" alt="Imprimir">
 			Ver estatuto
 		</a>
@@ -67,13 +67,6 @@ else
 <?php
 	}
 ?>
-<!--		
-	<div class="contenedor">
-		<img src="img/titulo.png" alt="Titulo" class="imgOK">
-		<p class="title">Título 1: Disposiciones generales</p>
-		<a href="capitulos.html"><img src="img/ir.png" alt="titulo1" class="imgOK"></a>
-	</div>
--->			
 	</section>
 	
 	<script src="js/jquery.js"></script>

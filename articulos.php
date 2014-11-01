@@ -45,7 +45,7 @@ if( haIniciadoSesion() )
 		<a href="editarArticulo.php" class="menu-boton" id="btnEdit">
 			<img src="img/editar.png" alt="Editar">Editar
 		</a>
-		<a href="generate/estatuto.php" class="menu-boton" id="btnLogout">
+		<a href="generate/estatuto-edicion.php" class="menu-boton" id="btnLogout">
 			<img src="img/exportar.png" alt="Imprimir">
 			Ver estatuto
 		</a>		

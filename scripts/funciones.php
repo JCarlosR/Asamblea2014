@@ -162,12 +162,18 @@ function getResultSet($query)
 
 function getFirstRow($query)
 {
-	return mysqli_fetch_row( getResultSet($query) );
+	$rpta = getResultSet($query);
+	if($rpta)
+		return mysqli_fetch_row( getResultSet($query) );
+	return array();
 }
 
 function getFirstValue($query)
 {
-	return getFirstRow($query)[0];		
+	$rpta = getFirstRow($query);
+	if($rpta)
+		return $rpta[0];		
+	return '';
 }
 
 /* ÚLTIMO NRO DE TIT, ART */
@@ -192,7 +198,7 @@ function getIdTitActivo($nroTit)
 function getIdCapActivo($nroCap, $nroTit)
 {
 	$idTit = getIdTitActivo($nroTit);
-	return getFirstValue("SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".$nroCap." AND ID_Titulo=".$idTit);	
+	return getFirstValue("SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".$nroCap." AND ID_Titulo=".$idTit);
 }
 
 function getIdArtActivo($nroArt, $nroCap, $nroTit)

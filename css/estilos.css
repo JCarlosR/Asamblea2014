@@ -5,7 +5,8 @@ body {
 	text-align: center;
 	background: rgba(232, 249, 233, 0.9);
 	overflow-x: hidden;
-	background: rgba(0, 200, 190, 0.2);
+	background: rgb(206, 217, 227); 
+	/*rgba(0, 200, 190, 0.2);*/
 }
 
 a {
@@ -18,7 +19,8 @@ label {
 }
 
 .encabezado {
-	background: rgba(120, 250, 180, 0.85);
+	background: rgb(161, 186, 179);
+	/*background: rgba(119, 124, 112, 0.8);*/
 }
 
 .encabezado-titulo {
@@ -27,24 +29,26 @@ label {
 }
 
 .encabezado-titulo a {
-	color: rgba(0, 0, 0, 0.70);
+	color: rgb(21, 44, 96);
 }
 
 .encabezado-titulo a:hover {
-	color: rgba(0, 0, 0, 1);
+	color: rgb(4, 24, 70);
 }
 
 .encabezado-profile {
+	color: rgb(04, 24, 70);	
 	margin: 0 1.5em;
 	text-align: right;
 }
 
 .menu-navegacion {
-	background: #FFFF80;
+	background: rgb(18, 55, 83);
+	/*#FFFF80;*/
 }
 
 .seccion-titulos {
-
+	background: rgb(206, 217, 227);
 	float: left;
 	width: 99%;
 	min-height: 1px;
@@ -67,7 +71,8 @@ label {
 }
 
 .edicion-boton {
-	background: rgba(20, 50, 20, 0.85);
+	/*background: rgba(20, 50, 20, 0.85);*/
+	background: rgba(110, 106, 90, 0.9);
 	color: white;
 	line-height: 3em;
 	display: inline-block;
@@ -145,7 +150,8 @@ label {
 }
 
 .editar {
-	background: rgba(10, 20, 100, 0.8);
+	/*background: rgba(10, 20, 100, 0.8);*/
+	background: rgba(106, 148, 180, 1);
 	color: yellow;
 	border: solid rgba(0, 0, 0, 0.4);
 	border-radius: 1em;

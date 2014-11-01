@@ -8,9 +8,10 @@
 	mysqli_query($con, "INSERT modificacion VALUES(NULL, '".$date."', '".$_SESSION['usuario']."')");
 	$resultado = mysqli_query($con, "SELECT MAX(ID_Modificacion) AS id FROM modificacion");
 	$ultimo = mysqli_fetch_row($resultado)[0];
+
 	// Antes de crearlo, preguntamos si existe 1 previo (indicaría edición).
 	$penUltimo = getIdTitActivo($_POST['nroTit']);
-	// echo $penUltimo;
+
 	// Creo 1 nuevo título y capturo su ID:
 	mysqli_query($con, "INSERT titulo VALUES(NULL, '".$_POST['descripcion']."', '".$_POST['nroTit']."', '".$ultimo."')");
 	$resultado = mysqli_query($con, "SELECT MAX(ID_Titulo) AS id FROM titulo");
@@ -18,8 +19,6 @@
 	echo $ultimo;
 	// Si existía 1 previo reasignamos sus capítulos hacia el nuevo:
 	if($penUltimo)
-	{
 		ejecutarQuery("UPDATE capitulo SET ID_Titulo=".$ultimo." WHERE ID_Titulo=".$penUltimo);	
-	}
 ?>
 

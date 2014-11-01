@@ -1,7 +1,7 @@
 <?php 
 	include ('../scripts/funciones.php');	
 	if( !haIniciadoSesion() )
-		header('Location: login.php');	
+		header('Location: estatuto.php');	
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,6 +33,7 @@
 			<article class="capitulo">
 				<h4>Capítulo <?= $capitulos[$j][2] ?>: <?= $capitulos[$j][1] ?></h4>
 				<a class="link" href="fragmento.php?tit=<?= $titulos[$i][2] ?>&cap=<?= $capitulos[$j][2] ?>">Imprimir</a>
+				<a class="link" href="../capitulos.php?title=<?= $titulos[$i][0] ?>">Editar</a>
 <?php 
 			$articulos = getArticulos($capitulos[$j][0]);
 			for($k=0; $k<sizeof($articulos); ++$k)

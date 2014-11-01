@@ -21,8 +21,8 @@ function keyUpNuevo(e)
 var nroCap, descrip;
 function agregarCapitulo() 
 {   
-	nroTit = $("span:first").text();
-	nroCap = $("span:last").text();
+	nroTit = $("span.nroTit").text();
+	nroCap = $("span.nroCap").text();
 	descrip = $("#txtCapitulo").val();
 	// Realizar peticion HTTP
 	peticion_http.open('POST', './scripts/agregarCapitulo.php', true);
@@ -73,9 +73,7 @@ function mostrarEditar()
 		$('#panel').remove();
 	});
 	
-	$('#btnGoEdit').on('click', function () {
-		modificarCapitulo();
-	});	
+	$('#btnGoEdit').on('click', modificarCapitulo);	
 
 	$(document).on('keyup', '#txtNuevo', keyUpEdicion);
 }
@@ -87,15 +85,16 @@ function keyUpEdicion(e)
     else this.value = this.value.toUpperCase();
 }
 
-var nuevaDescrip;
+var nuevaDescrip, nroTit;
 function modificarCapitulo() 
 {
+	nroTit = $("span.nroTit").text();
 	nuevaDescrip = $('#txtNuevo').val();
 	$('#panel').remove();	
 	// Realizar peticion HTTP
 	peticion_http.open('POST', './scripts/agregarCapitulo.php', true);
 	peticion_http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	peticion_http.send('descripcion='+nuevaDescrip+'&nroCap='+nroSelected+'&nroTit='+nroSelected);
+	peticion_http.send('descripcion='+nuevaDescrip+'&nroCap='+nroSelected+'&nroTit='+nroTit);
 
 	peticion_http.onreadystatechange = actualizaContenido;
 

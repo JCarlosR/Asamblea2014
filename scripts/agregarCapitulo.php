@@ -13,7 +13,8 @@
 	$penUltimo = getIdCapActivo($_POST['nroCap'], $_POST['nroTit']);
 
 	// Creo 1 nuevo capítulo y capturo su ID:
-	mysqli_query($con, "INSERT capitulo VALUES(NULL, '".$_POST['descripcion']."', '".$_POST['nroCap']."', '".$ultimo."', ".$_POST['nroTit'].")");
+	$idTit = getIdTitActivo($_POST['nroTit']);
+	mysqli_query($con, "INSERT capitulo VALUES(NULL, '".$_POST['descripcion']."', '".$_POST['nroCap']."', '".$ultimo."', ".$idTit.")");
 	$resultado = mysqli_query($con, "SELECT MAX(ID_Capitulo) AS id FROM capitulo");
 	$ultimo = mysqli_fetch_row($resultado)[0];
 	echo $ultimo;

@@ -35,7 +35,7 @@ if( haIniciadoSesion() )
 	</nav>
 
 	<header class="actual">
-		<label>Estás en <strong>Título <span><?php echo $infoTit[2] ?></span>: "<?php echo $infoTit[1] ?>"</strong></label>
+		<label>Estás en <strong>Título <span class="nroTit"><?= $infoTit[2] ?></span>: "<?= $infoTit[1] ?>"</strong></label>
 	</header>
 
 	<nav class="menu-navegacion">
@@ -56,7 +56,7 @@ if( haIniciadoSesion() )
 	<section class="editar">
 		<form class="formAjax" action="">
 			<label for="txtCapitulo" class="como-bloque">
-				Ingrese <strong>Capítulo <span><?= sizeof($capitulos)+1 ?></span></strong>:
+				Ingrese <strong>Capítulo <span class="nroCap"><?= sizeof($capitulos)+1 ?></span></strong>:
 			</label>
 			<input type="text" id="txtCapitulo" class="como-bloque">
 			<div class="edicion-boton" id="btnAccept">

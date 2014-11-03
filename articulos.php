@@ -39,12 +39,12 @@ if( haIniciadoSesion() )
 	</header>
 
 	<nav class="menu-navegacion">
-		<a href="nuevoArticulo.php?cap=<?= $nro ?>" class="menu-boton">
+		<a href="nuevoArt.php?cap=<?= $nro ?>" class="menu-boton">
 			<img src="img/agregar.png" alt="Agregar">Agregar
 		</a>
-		<a href="editarArticulo.php" class="menu-boton" id="btnEdit">
+		<div class="menu-boton" id="btnEdit">
 			<img src="img/editar.png" alt="Editar">Editar
-		</a>
+		</div>
 		<a href="generate/estatuto-edicion.php" class="menu-boton" id="btnLogout">
 			<img src="img/exportar.png" alt="Imprimir">
 			Ver estatuto
@@ -66,17 +66,18 @@ if( haIniciadoSesion() )
 	
 ?>
 	</section>
-<!--	<div class="contenedor">
-			<img src="img/documento.png" alt="Titulo" class="imgOK">
-			<p class="title">Artículo 1 : Disposiciones generales</p>
-			<a href="#"><img src="img/ir.png" alt="titulo1" class="imgOK"></a>
-		</div> -->
-		
-	
 	
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
-	<?php 
+	<script>
+	$('#btnEdit').on('click', redirigir);
+	function redirigir() 
+	{
+		nroArt = $('.radiobtn:checked').val();
+		location.href = 'modificarArt.php?art='+nroArt;
+	}
+	</script>
+<?php 
 	require_once 'menu-lateral.html';
 ?>
 </body>

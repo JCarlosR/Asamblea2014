@@ -97,28 +97,18 @@ function getCapitulos($idTit)
 	return $capitulos;	
 }
 
-function getInfoTit($idTit)
+function getArticulos($idCap)
 {
 	abrirConex();
 	global $conexion; // Para evitar escribir $GLOBALS['conexion']
-	$resultado = mysqli_query($conexion, "SELECT * FROM titulo WHERE ID_Titulo=".$idTit);
-	$fila = mysqli_fetch_row($resultado);
-	cerrarConex($resultado);
-	return $fila;
-}
-
-function getArticulos($c)
-{
-	abrirConex();
-	global $conexion; // Para evitar escribir $GLOBALS['conexion']
-	$resulSet = mysqli_query($conexion, "SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$c);
+	$resulSet = mysqli_query($conexion, "SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$idCap);
 	$maxNumeroArt = mysqli_fetch_row($resulSet)[0];
 	$j = 0;
 	for($i=1; $i<=$maxNumeroArt; ++$i)
 	{
 		$resulSet = mysqli_query($conexion, "
 			SELECT * FROM articulo WHERE ID_Articulo =  
-			(SELECT MAX(ID_Articulo) FROM articulo WHERE numeroArt=".$i." AND ID_Capitulo=".$c.")
+			(SELECT MAX(ID_Articulo) FROM articulo WHERE numeroArt=".$i." AND ID_Capitulo=".$idCap.")
 		");
 		if( $fila = mysqli_fetch_row($resulSet) )
 			$articulos[$j++] = $fila;
@@ -131,6 +121,16 @@ function getArticulos($c)
 	return $articulos;	
 }
 
+function getInfoTit($idTit)
+{
+	abrirConex();
+	global $conexion;
+	$resultado = mysqli_query($conexion, "SELECT * FROM titulo WHERE ID_Titulo=".$idTit);
+	$fila = mysqli_fetch_row($resultado);
+	cerrarConex($resultado);
+	return $fila;
+}
+
 function getInfoCap($idCap)
 {
 	global $conexion;
@@ -139,6 +139,26 @@ function getInfoCap($idCap)
 	$fila = mysqli_fetch_row($resultado);
 	cerrarConex($resultado);
 	return $fila;
+}
+
+function getInfoArt($idArt)
+{
+	return getFirstRow("SELECT * FROM articulo WHERE ID_Articulo=".$idArt);
+}
+
+function getArtPrev($nroArt, $cantidad=-1)
+{	// Devuelve todos los artículos previos y el actual:
+	$resultSet = getResultSet("SELECT S.asamNombre, M.fecha, A.contenidoArt FROM articulo A INNER JOIN modificacion M ON A.ID_Modificacion=M.ID_Modificacion INNER JOIN asambleista S ON S.asamUsername=M.asamUsername WHERE A.numeroArt=".$nroArt." ORDER BY A.ID_Articulo DESC");
+	if($resultSet)
+	{
+		$i = 0;
+		while( $fila = mysqli_fetch_row($resultSet) )
+		{
+			$artPrevios[$i] = $fila;
+			if(++$i==$cantidad) break;
+		}
+		return $artPrevios;
+	} return array();
 }
 
 /* FUNCIONES UTILITARIAS */
@@ -201,10 +221,9 @@ function getIdCapActivo($nroCap, $nroTit)
 	return getFirstValue("SELECT MAX(ID_Capitulo) FROM capitulo WHERE numeroCap=".$nroCap." AND ID_Titulo=".$idTit);
 }
 
-function getIdArtActivo($nroArt, $nroCap, $nroTit)
+function getIdArtActivo($nroArt)
 {
-	$idCap = getIdCapActivo($nroCap, $nroTit);
-	return getFirstValue("SELECT MAX(ID_Articulo) FROM articulo WHERE numeroArt=".$nroArt." AND ID_Capitulo=".$idCap);		
+	return getFirstValue("SELECT MAX(ID_Articulo) FROM articulo WHERE numeroArt=".$nroArt);		
 }
 
 /* OBTENER AGREGADOS RIGHT NOW */

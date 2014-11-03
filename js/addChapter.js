@@ -48,7 +48,7 @@ function muestraContenido()
  
 function mostrarNuevoCapitulo(idNuevo) 
 {
-	var esto = '<div class="contenedor"><input type="radio" name="grupoRbtn" value="'+idNuevo+'" class="radiobtn" /><img src="img/capitulo.png" alt="Capítulo" class="izquierda"><p class="title"><strong>Capítulo '+nroCap+':</strong> '+descrip+'</p><a href="articulos.php?cap='+idNuevo+'"><img src="img/ir.png" alt="capítulo1" class="derecha"></a></div>';
+	var esto = '<div class="contenedor"><a href="articulos.php?cap='+idNuevo+'"><input type="radio" name="grupoRbtn" value="'+idNuevo+'" class="radiobtn" /><img src="img/capitulo.png" alt="Capítulo" class="izquierda"><p class="title"><strong>Capítulo '+nroCap+':</strong> '+descrip+'</p></a></div>';
 	document.getElementsByClassName("seccion-titulos")[0].innerHTML += esto;
 	$("span:last").text(++nroCap);
 }

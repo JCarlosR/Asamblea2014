@@ -3,31 +3,31 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<div align="center">
 	<meta charset="UTF-8">
 	<title>Estatuto Generado</title>
 	<link rel="stylesheet" href="../css/normalize.css">
 	<link rel="stylesheet" href="estilos.css">
-</head>
+</div>
 <body>
-	<header>
+	<div class="header">
 		<h1>Estatuto UNT</h1>
 		<h2>Versión 2014</h2>
 		<p>Última modificación: <?= getFirstValue("SELECT fecha FROM modificacion ORDER BY ID_Modificacion DESC LIMIT 1") ?></p>
-	</header>
+	</div>
 <?php
 	$titulos = getTitulos();
 	for($i=0; $i<sizeof($titulos); ++$i)
 	{
 ?>
-	<section class="seccion-titulo">
+	<div class="seccion-titulo">
 		<h3>Título <?php echo $titulos[$i][2] ?>: <?php echo $titulos[$i][1] ?></h3>
 <?php 
 		$capitulos = getCapitulos($titulos[$i][0]);
 		for($j=0; $j<sizeof($capitulos); ++$j)
 		{
 ?>
-			<article class="capitulo">
+			<div class="capitulo">
 				<h4>Capítulo <?php echo $capitulos[$j][2] ?>: <?php echo $capitulos[$j][1] ?></h4>
 <?php 
 			$articulos = getArticulos($capitulos[$j][0]);
@@ -43,11 +43,12 @@
 <?php 
 			}
 ?>
-			</article>
+			</div>
 <?php
 		}
 ?>
-	</section>	
+	</div>
+
 <?php		
 	}
 ?>

@@ -22,10 +22,7 @@ Tareas con detalle extremo, a tratar luego del Beta:
 
 Tareas completadas recientemente:
 * Ícono de ver estatuto in all pages
-* Agregadas funciones utilitarias
 * Menú lateral con los enlaces
-* Solucionado menú lateral cuando no habían entradas
-* Flechas desbordantes quitadas
 * Fecha de la última modificación (estatuto)
 * Apariencia interna
 - Agregar editar artículos

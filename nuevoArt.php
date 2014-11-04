@@ -43,7 +43,7 @@ if( haIniciadoSesion() )
             <img src="img/guardar.png" alt="Guardar">
             Guardar
         </div>
-        <a href="articulos.php?cap=<?php echo $infoCap[4] ?>" class="edicion-boton">
+        <a href="articulos.php?cap=<?php echo $infoCap[0] ?>" class="edicion-boton">
             <img src="img/cancelar.png" alt="Cancelar">
             Cancelar        
         </a>

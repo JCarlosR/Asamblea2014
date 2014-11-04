@@ -38,7 +38,7 @@ if( haIniciadoSesion() )
     <header class="actual">
         <p><strong>Título <span id="nroTit"><?= $infoTit[2] ?></span>: "<?= $infoTit[1] ?>"</strong></p>
         <p><strong>Capítulo <span id="nroCap"><?= $infoCap[2] ?></span>: "<?=$infoCap[1] ?>"</strong></p>
-        <p>Artículo en edición: <strong>Artículo <?= $infoArt[2] ?></strong></p>
+        <p>Artículo en edición: <strong>Artículo <span id="nroArt"><?= $infoArt[2] ?></span></strong></p>
     </header>    
     <form class="formAjax" action="">
         <p>Contenido del artículo:</p>
@@ -67,7 +67,7 @@ if( haIniciadoSesion() )
     {   // ¿Quién? ¿Cuándo?
 ?>
             <tr class="tablilla-fila">
-                <td>Cambio realizado por <?= $artPrevios[$i][0] ?> el <?= $artPrevios[$i][1] ?><img src="img/Link.png" alt="ver" title="Ver" class="img_ver"></td>
+                <td>Cambio realizado por <?= $artPrevios[$i][0] ?> el <?= $artPrevios[$i][1] ?><img src="img/Link.png" alt="ver" title="Ver" class="copy<?= $i ?>"></td>
             </tr>
 <?php
     }
@@ -84,15 +84,21 @@ if( haIniciadoSesion() )
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
     <script>
+    $(document).on('click', asignarFuncionlidad);
     var contenidos = [];
+    function asignarFuncionlidad() {
 <?php 
     for($i=0; $i<sizeof($artPrevios); ++$i)
     {   // ¿Qué contenido?
 ?>
-        contenidos[<?= $i ?>] = '<?= $artPrevios[2] ?>';
+        contenidos[<?= $i ?>] = '<?= $artPrevios[$i][2] ?>';
+        $('.copy<?= $i ?>').on('click', function(){
+            $('#txtContenido').val(contenidos[<?= $i ?>]);
+        });
+        
 <?php
     }
-?>    
+?>  }
     </script>
     <script src="js/editArticle.js"></script> 
 </body>

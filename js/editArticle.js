@@ -9,17 +9,17 @@ window.onload = function ()
 	}
 };
 
-var nroTit, nroCap, idCap, contenido;
+var /*nroTit, */nroCap, idCap, contenido;
 function editarArticulo() 
 {   
 	idCap = $("#idCap").text();
-	nroTit = $("#nroTit").text();
-	nroCap = $("#nroCap").text();
+	// nroTit = $("#nroTit").text();
+	nroArt = $("#nroArt").text();
 	contenido = $("#txtContenido").val();
 	// Realizar peticion HTTP
-	peticion_http.open('POST', './scripts/agregarArticulo.php', true);
+	peticion_http.open('POST', './scripts/editarArticulo.php', true);
 	peticion_http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	peticion_http.send('contenido='+contenido+'&nroTit='+nroTit+'&nroCap='+nroCap+'&idCap='+idCap);
+	peticion_http.send('contenido='+contenido+'&nroArt='+nroArt+'&idCap='+idCap);
 
 	peticion_http.onreadystatechange = muestraContenido;
 }

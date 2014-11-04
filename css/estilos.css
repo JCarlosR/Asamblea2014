@@ -5,8 +5,8 @@ body {
 	text-align: center;
 	background: rgba(232, 249, 233, 0.9);
 	overflow-x: hidden;
-	background: rgb(206, 217, 227); 
-	/*rgba(0, 200, 190, 0.2);*/
+	background: url('../img/principal/pattern.png');
+	font-family: 'Roboto';
 }
 
 a {
@@ -19,8 +19,7 @@ label {
 }
 
 .encabezado {
-	background: rgb(161, 186, 179);
-	/*background: rgba(119, 124, 112, 0.8);*/
+	background: #383838;
 }
 
 .encabezado-titulo {
@@ -29,26 +28,34 @@ label {
 }
 
 .encabezado-titulo a {
-	color: rgb(21, 44, 96);
+	color: white;
 }
 
 .encabezado-titulo a:hover {
-	color: rgb(4, 24, 70);
+	color: rgba(0, 150, 0, 0.9);
 }
 
 .encabezado-profile {
-	color: rgb(04, 24, 70);	
+	color: white;	
 	margin: 0 1.5em;
 	text-align: right;
 }
 
+.logout {
+	float: right;
+	margin: 0 0.6em;
+}
+
+.logout img {
+	height: 1.5em;
+	width: 1.5em;
+}
+
 .menu-navegacion {
-	background: rgb(18, 55, 83);
-	/*#FFFF80;*/
+	background: #474747;
 }
 
 .seccion-titulos {
-	background: rgb(206, 217, 227);
 	float: left;
 	width: 99%;
 	min-height: 1px;
@@ -59,20 +66,21 @@ label {
 	margin: 1.5em 1em;
 	min-width: 7em;
 	line-height: 4.5em;
-	background: rgb(78, 156, 175);
+	background: #1D1D1D;
 	padding: 0 1em;
 	border-radius: 0.25em;
 	color: white;
-	font-weight: bold;		
+	font-weight: bold;	
+	cursor: pointer;	
 }
 
 .menu-boton:hover {
-	background: rgb(38, 116, 115);
+	background: #808080;
+	color: black;
 }
 
 .edicion-boton {
-	/*background: rgba(20, 50, 20, 0.85);*/
-	background: rgb(38, 116, 115);
+	background: #474747;
 	color: white;
 	line-height: 3em;
 	display: inline-block;
@@ -104,8 +112,8 @@ label {
 }
 
 .contenedor:hover {
-	background: rgba(180, 255, 242, 1);
-	border: solid 2px #0000FF;
+	background: #E0E0E0;
+	border: solid 2px black;
 }
 
 .derecha {
@@ -134,8 +142,7 @@ label {
 }
 
 .volver {
-	background: #80FF80;
-	border: dashed 1px;
+	background: #B2B2B2;
 	line-height: 3em;
 }
 
@@ -145,14 +152,13 @@ label {
 }
 
 .actual {
-	background: rgba(120, 180, 255, 0.6);
+	background: #AAAAAA;
 	padding: 0.4em 0;
 }
 
 .editar {
-	/*background: rgba(10, 20, 100, 0.8);*/
-	background: rgba(106, 148, 180, 1);
-	color: yellow;
+	background: #C0C0C0;
+	color: black;
 	border: solid rgba(0, 0, 0, 0.4);
 	border-radius: 1em;
 	width: 700px;
@@ -243,7 +249,7 @@ label {
 }
 #sidebar {
 	display: none;
-    background: #2290c9;
+    background: #808080;
     position: absolute;
     text-align: left;
     width: 300px;
@@ -275,7 +281,7 @@ label {
 }
 
 .sidebar-item:hover a {
-    background: #196c96;
+    background: rgba(10, 10, 25, 0.5);
 }
 
 .sidebar-item p {
@@ -304,7 +310,7 @@ label {
 }
 
 .main-content #sidebar-toggle {
-    background: #2290c9;
+    background: #313131;
     border-radius: 3px;
     display: block;
     position: relative;

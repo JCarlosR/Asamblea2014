@@ -23,16 +23,18 @@
 	while($ultNroArt==0 && $idTit>0) // Mientras no haya iremos al Tit anterior
 	{	
 		while($ultNroArt==0 && $nroCap>0 ) // Vamos por el ultNroArt del cap anterior
-			{	
-				$resultSet = mysqli_query($con, "SELECT ID_Capitulo FROM capitulo WHERE numeroCap=".(--$nroCap)." AND ID_Titulo =".$idTit);
-				$idCapAnterior = mysqli_fetch_row($resultSet)[0];
+		{	
+			$resultSet = mysqli_query($con, "SELECT ID_Capitulo FROM capitulo WHERE numeroCap=".(--$nroCap)." AND ID_Titulo =".$idTit);
+			$idCapAnterior = mysqli_fetch_row($resultSet)[0];
 
-				$resultSet = mysqli_query($con, "SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$idCapAnterior);
-				if($resultSet)
-					$ultNroArt = mysqli_fetch_row($resultSet)[0];		
-				else
-					$ultNroArt = 0;
-			}
+			$resultSet = mysqli_query($con, "SELECT MAX(numeroArt) FROM articulo WHERE ID_Capitulo=".$idCapAnterior);
+			if($resultSet)
+				$ultNroArt = mysqli_fetch_row($resultSet)[0];		
+			else
+				$ultNroArt = 0;
+		}
+		if($resultSet==0)
+		{
 			$resultSet = mysqli_query($con,"SELECT MAX(ID_Capitulo) FROM capitulo WHERE ID_Titulo=".(--$idTit));
 			$idCapAnterior = mysqli_fetch_row($resultSet)[0];
 
@@ -46,7 +48,8 @@
 			if($resultSet)
 				$nroCap=mysqli_fetch_row($resultSet)[0];		
 			else
-				$nroCap=0;		
+				$nroCap=0;	
+		}	
 	}
 	// Aqui hubo algo que nunca entendió Juarez :v
 

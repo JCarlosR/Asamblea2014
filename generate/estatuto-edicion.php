@@ -12,17 +12,17 @@
 	<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-	<header>
+	<div class="header">
 		<h1>Estatuto UNT</h1>
-		<h2>Versión 2014</h2>
+		<h2><a href="generador.php">Ver en PDF</a></h2>
 		<p>Última modificación: <?= getFirstValue("SELECT fecha FROM modificacion ORDER BY ID_Modificacion DESC LIMIT 1") ?></p>
-	</header>
+	</div>
 <?php
 	$titulos = getTitulos();
 	for($i=0; $i<sizeof($titulos); ++$i)
 	{
 ?>
-	<section class="seccion-titulo">
+	<div class="seccion-titulo">
 		<h3>Título <?= $titulos[$i][2] ?>: <?= $titulos[$i][1] ?></h3>
 		<a class="link" href="fragmento.php?tit=<?= $titulos[$i][2] ?>">Imprimir</a>
 <?php 
@@ -30,7 +30,7 @@
 		for($j=0; $j<sizeof($capitulos); ++$j)
 		{
 ?>
-			<article class="capitulo">
+			<div class="capitulo">
 				<h4>Capítulo <?= $capitulos[$j][2] ?>: <?= $capitulos[$j][1] ?></h4>
 				<a class="link" href="fragmento.php?tit=<?= $titulos[$i][2] ?>&cap=<?= $capitulos[$j][2] ?>">Imprimir</a>
 				<a class="link" href="../capitulos.php?title=<?= $titulos[$i][0] ?>">Editar</a>
@@ -48,11 +48,11 @@
 <?php 
 			}
 ?>
-			</article>
+			</div>
 <?php
 		}
 ?>
-	</section>	
+	</div>	
 <?php		
 	}
 ?>

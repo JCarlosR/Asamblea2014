@@ -1,14 +1,14 @@
 Tareas siendo procesadas:
 - Posibilidad de editar inline (si se tienen los permisos)
 - Inhabilitar botón
-- Solucionar error editar capítulos
-- Agregar editar artículos
 - Evaluar conflictos de post
 
-- Guardar como PDF (Juarez) | Imprimir (Soles) | Enviar por correo (Arcadio)
-- INDEX (Arcadio y Soles)
+- Guardar como PDF (Juarez): 80% 
+-- Falta buscar otra librería que genere mejor el PDF
+- Enviar por correo (Arcadio): 70%
+- Menú flotante (Soles): 30%
 
-Corregir enlace luego de editar
+- Cambiar "Cancelar" por "Dejar de editar" en edición de arts.
 
 * no preocuparse en detalles tecnicos.
 * mostrar la funcionalidad
@@ -28,3 +28,4 @@ Tareas completadas recientemente:
 * Flechas desbordantes quitadas
 * Fecha de la última modificación (estatuto)
 * Apariencia interna
+- Agregar editar artículos

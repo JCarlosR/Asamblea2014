@@ -3,12 +3,12 @@
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<div align="center">
 	<meta charset="UTF-8">
 	<title>Estatuto Generado</title>
 	<link rel="stylesheet" href="../css/normalize.css">
 	<link rel="stylesheet" href="estilos.css">
-</head>
+</div>
 <body>
 	<div class="header">
 		<h1>Estatuto UNT</h1>
@@ -47,7 +47,12 @@
 <?php
 		}
 ?>
+<<<<<<< HEAD
 	</div>	
+=======
+	</div>
+
+>>>>>>> origin/master
 <?php		
 	}
 ?>

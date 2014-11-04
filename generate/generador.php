@@ -1,5 +1,10 @@
 <?php 
+<<<<<<< HEAD
 	/*FUNCIÓN PDF*/
+=======
+/*FUNCION PDF*/
+
+>>>>>>> origin/master
 	ob_start();
     include(dirname(__FILE__).'/estatuto.php');
     $content = ob_get_clean();

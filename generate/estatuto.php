@@ -47,12 +47,9 @@
 <?php
 		}
 ?>
-<<<<<<< HEAD
-	</div>	
-=======
+
 	</div>
 
->>>>>>> origin/master
 <?php		
 	}
 ?>

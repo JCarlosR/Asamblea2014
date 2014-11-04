@@ -14,6 +14,7 @@
 <body>
 	<div class="header">
 		<h1>Estatuto UNT</h1>
+		<a class="link" href="estatuto.php">Imprimir</a>
 		<h2><a href="generador.php">Ver en PDF</a></h2>
 		<p>Última modificación: <?= getFirstValue("SELECT fecha FROM modificacion ORDER BY ID_Modificacion DESC LIMIT 1") ?></p>
 	</div>

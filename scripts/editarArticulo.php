@@ -10,5 +10,5 @@
 	$ultimo = mysqli_fetch_row($resultado)[0];
 
 	// Creo 1 nuevo artículo:
-	mysqli_query($con, "INSERT articulo VALUES(NULL, '".$_POST['contenido']."', '".$_POST['nroArt']."', '".$ultimo."', ".$_POST['idCap'].")");
+	mysqli_query($con, "INSERT articulo VALUES(NULL, '".htmlentities($_POST['contenido'])."', '".$_POST['nroArt']."', '".$ultimo."', ".$_POST['idCap'].")");
 ?>

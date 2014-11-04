@@ -46,7 +46,7 @@ if( haIniciadoSesion() )
 
         <div id="btnGuardar" class="edicion-boton">
             <img src="img/guardar.png" alt="Guardar">
-            Guardar
+            Guardar cambios
         </div>
         <a href="articulos.php?cap=<?php echo $infoCap[0] ?>" class="edicion-boton">
             <img src="img/cancelar.png" alt="Cancelar">

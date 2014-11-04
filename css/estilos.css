@@ -14,7 +14,6 @@ a {
 }
 
 label { 
-	/* defecto: inline-block; */
 	vertical-align: middle;
 }
 
@@ -32,7 +31,7 @@ label {
 }
 
 .encabezado-titulo a:hover {
-	color: rgba(0, 150, 0, 0.9);
+	text-decoration: underline;
 }
 
 .encabezado-profile {

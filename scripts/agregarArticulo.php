@@ -55,7 +55,7 @@
 
 	++$ultNroArt; // Dado que el que vamos a agregar será el último ahora
 	// Agregamos el nuevo artículo
-	mysqli_query($con, "INSERT articulo VALUES(NULL, '".$_POST['contenido']."', ".$ultNroArt.", ".$ultModif.", ".$_POST['idCap'].")");
+	mysqli_query($con, "INSERT articulo VALUES(NULL, '".htmlentities($_POST['contenido'])."', ".$ultNroArt.", ".$ultModif.", ".$_POST['idCap'].")");
 
 	// Afectamos a todos los artículos QUE TENGAN UN NROARTICULO >= AL Q ACABAMOS DE AGREGAR, pero que se encuentren en ID_CAP DIFERENTE
 	$resultSet = mysqli_query($con, "UPDATE articulo SET numeroArt=numeroArt+1 WHERE numeroArt>=".$ultNroArt." AND ID_Capitulo<>".$_POST['idCap']);
